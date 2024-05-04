@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.qiqijava.qiqiweb.mapper.MovMapper">
+    <insert id="save">
+        insert into mov(id,movName,types,stu,region,times,img,mvs) values (#{id},#{movName},#{types},#{stu},#{region},#{times},#{img},#{mvs})
+    </insert>
+
+
+    <update id="updateById">
+        update mov set id = #{id},movName = #{movName},types = #{types},stu = #{stu},region = #{region},times = #{times},img = #{img},mvs = #{mvs} where id = #{id}
+    </update>
+
+
+    <delete id="deleteById">
+        delete from mov where id = #{id}
+    </delete>
+
+
+    <select id="list" resultType="com.example.qiqijava.qiqiweb.entity.Mov">
+        select * from mov
+    </select>
+
+
+    <select id="listByCondition" resultType="com.example.qiqijava.qiqiweb.entity.Mov">
+        select * from mov
+        <where>
+            <if test="id != null and id != ''">
+                id like concat('%',#{id},'%')
+            </if>
+            <if test="movName != null and movName != ''">
+                and movName like concat('%',#{movName},'%')
+            </if>
+        </where>
+        order by id desc
+    </select>
+
+
+    <select id="getById" resultType="com.example.qiqijava.qiqiweb.entity.Mov">
+
+    </select>
+
+
+    <select id="getByIdMov" resultType="com.example.qiqijava.qiqiweb.entity.Mov">
+        select * from mov where id = #{id}
+    </select>
+
+
+    <select id="listByConditionMov" resultType="com.example.qiqijava.qiqiweb.entity.Mov">
+        select * from mov where id = #{id}
+    </select>
+
+
+    <select id="listBysConditionMov" resultType="com.example.qiqijava.qiqiweb.entity.Mov">
+        select * from mov where id = #{id}
+    </select>
+</mapper>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--mapper表示映射到哪个dao接口-->
+<mapper namespace="com.example.Mapper.CommentMapper">
+    <insert id="save">
+        insert into comments(postId,userId,comments) values (#{postId},#{userId},#{comments})
+    </insert>
+    <delete id="del">
+        delete from basics where commentsId = #{commentsId}
+    </delete>
+
+    <select id="pageByPostId" resultType="com.example.Entity.Comments">
+        SELECT *
+        FROM comments
+                 INNER JOIN users ON comments.userId = users.id
+        WHERE comments.postId = #{postId}
+    </select>
+</mapper>

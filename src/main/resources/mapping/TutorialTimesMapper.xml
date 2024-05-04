@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--mapper表示映射到哪个dao接口-->
+<mapper namespace="com.example.mapper.TutorialTimesMapper">
+    <insert id="add">
+        insert into tutorialtimes(titles,pId,path) values(#{titles},#{pId},#{path})
+    </insert>
+
+    <update id="save">
+
+    </update>
+    <update id="updateById">
+
+    </update>
+
+    <select id="listByCondition" resultType="com.example.entity.tutorialtimes">
+        select * from tutorialtimes
+    </select>
+    <select id="listByConditiontutorialtimes" resultType="com.example.entity.tutorialtimes">
+        select * from tutorialtimes where id = #{id}
+    </select>
+    <select id="listv" resultType="com.example.entity.tutorialtimes">
+        select * from tutorialtimes where pId = #{pId} and id = #{id}
+    </select>
+    <select id="getById" resultType="com.example.entity.tutorialtimes">
+
+    </select>
+</mapper>

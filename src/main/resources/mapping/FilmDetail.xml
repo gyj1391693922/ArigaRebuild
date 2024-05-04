@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.qiqijava.qiqiprovider.mapper.AkasMapper">
+    <insert id="save">
+
+    </insert>
+
+
+    <update id="updateById">
+        update akas set tconst = #{tconst},title=#{title},region=#{region},language=#{language},types=#{types},attributes=#{attributes},isOrlginalTitle=#{isOrlginalTitle} where id = #{id}
+    </update>
+
+
+    <delete id="deleteById">
+        delete from akas where id = #{id}
+    </delete>
+
+    <select id="getById" resultType="com.example.qiqijava.qiqiprovider.entity.Akas">
+
+    </select>
+
+    <select id="listByConditionAkas" resultType="com.example.qiqijava.qiqiprovider.entity.Akas">
+        select * from akas where tconst = #{tconst}
+        order by id desc
+    </select>
+    <select id="listBysConditionAkas" resultType="com.example.qiqijava.qiqiprovider.entity.Akas">
+        select * from akas where id = #{id}
+    </select>
+</mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--mapper表示映射到哪个dao接口-->
+<mapper namespace="com.example.mapper.TutorialMapper">
+    <insert id="add">
+        insert into tutorial(title,img) values(#{title},#{img})
+    </insert>
+    <select id="listByCondition" resultType="com.example.entity.tutorial">
+        select * from tutorial
+    </select>
+    <select id="listBysConditionMov" resultType="com.example.entity.tutorial">
+        select * from tutorial where id = #{id}
+    </select>
+</mapper>

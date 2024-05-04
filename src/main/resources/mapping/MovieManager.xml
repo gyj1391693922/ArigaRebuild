@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.qiqijava.qiqiapi.mapper.PortfolioMapper">
+    <insert id="save">
+        insert into portfolio(id,pNum,video,upTime) values #{tcont},#{pNum},#{video},#{current_timestamp()})
+    </insert>
+
+
+    <update id="updateById">
+        update portfolio set id = #{id},pNum = #{pNum},video = #{video},upTime = #{now()} where pid = #{pid}
+    </update>
+
+
+    <delete id="deleteById">
+        delete from portfolio where pid = #{pid}
+    </delete>
+
+
+    <select id="list" resultType="com.example.qiqijava.qiqiapi.entity.Portfolio">
+        select * from portfolio
+    </select>
+
+
+    <select id="listByCondition" resultType="com.example.qiqijava.qiqiapi.entity.Portfolio">
+        select * from portfolio
+        <where>
+            <if test="tcont != null and tcont != ''">
+                id like id('%',#{tcont},'%')
+            </if>
+            <if test="pNum != null and pNum != ''">
+                and pNum like concat('%',#{pNum},'%')
+            </if>
+        </where>
+        order by id desc
+    </select>
+
+
+    <select id="getById" resultType="com.example.qiqijava.qiqiapi.entity.Portfolio">
+
+    </select>
+
+    <select id="listBysConditionPortfolio" resultType="com.example.qiqijava.qiqiapi.entity.Portfolio">
+        select * from portfolio where id = #{id}
+    </select>
+    <select id="listv" resultType="com.example.qiqijava.qiqiapi.entity.Portfolio">
+        select * from portfolio where pNum = #{pNum} and id = #{id}
+    </select>
+</mapper>

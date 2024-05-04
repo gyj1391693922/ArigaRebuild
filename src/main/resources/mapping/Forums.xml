@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.ForumsMapper">
+    <select id="listByCondition" resultType="com.example.entity.forums">
+        <![CDATA[SELECT forums.*, count(comments.id) as cont
+        FROM forums
+        left join comments on forums.tid = comments.postId
+        ]]>
+        <where>
+            <if test="title != null and title != ''">
+                title like concat('%',#{title},'%')
+            </if>
+            <if test="user != null and user != ''">
+                title user concat('%',#{user},'%')
+            </if>
+        </where>
+        GROUP BY forums.tid
+        order by tID desc
+    </select>
+</mapper>
